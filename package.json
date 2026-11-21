@@ -1,0 +1,31 @@
+{
+  "name": "dsh-persona-memory",
+  "version": "0.2.0",
+  "description": "DSH-EVA：给 DSH 一个可编辑的持续人格，并让重要记忆在不同对话之间延续。",
+  "type": "module",
+  "main": "index.js",
+  "icon": "icon.svg",
+  "keywords": ["dsh", "dsh-plugin", "dsh-eva", "persona", "long-term-memory", "memory"],
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/Snowfox-2887/DSH-EVA.git" },
+  "homepage": "https://github.com/Snowfox-2887/DSH-EVA#readme",
+  "bugs": { "url": "https://github.com/Snowfox-2887/DSH-EVA/issues" },
+  "engines": { "node": ">=22.13.0" },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": ["index.js", "client.js", "lib", "locale", "icon.svg", "cordis.patch.yml", "README.md", "LICENSE"],
+  "scripts": { "test": "node --test tests/*.test.js" },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "inject": ["@deepseek-ai/dsh-client-ui-settings", "@deepseek-ai/dsh-client-locale", "@deepseek-ai/dsh-client-connection", "@deepseek-ai/dsh-client-ui-sidebar"]
+    }
+  }
+}
